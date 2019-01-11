@@ -36,7 +36,7 @@ router.get('/authFacebook/done', passport.authenticate('facebook', {failureRedir
   //return res.json(req.user);
 
   let fbID = req.user.id;
-  let query = "SELECT * FROM users WHERE fbID = ?"
+  let query = "SELECT * FROM fb_table WHERE fbID = ?"
 
   connection.query(query, [fbID], function(err, results){
     if(err){
