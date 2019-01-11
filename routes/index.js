@@ -33,14 +33,14 @@ passport.deserializeUser(function(profile,done){
 
 router.get('/authFacebook', passport.authenticate('facebook'));
 router.get('/authFacebook/done', passport.authenticate('facebook', {failureRedirect: '/'}), function(req,res){
-  return res.json(req.user);
-  /*
+  //return res.json(req.user);
+
   let fbID = req.user.id;
   let query = "SELECT * FROM users WHERE fbID = ?"
 
   connection.query(query, [fbID], function(err, results){
     if(err){
-      res.json({ms: "Error query"})
+      res.json({ms: "Error query" + req.user})
     }
 
     if(results.length == 0){
@@ -51,7 +51,6 @@ router.get('/authFacebook/done', passport.authenticate('facebook', {failureRedir
       return res.redirect('/home?userID=' + results[0].id)
     }
   })
-  */
 });
 
 router.post('/doRegister', function(req, res){
