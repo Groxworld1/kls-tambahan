@@ -39,7 +39,7 @@ router.get('/authFacebook/done', passport.authenticate('facebook', {failureRedir
 
   connection.query(query, [fbID], function(err, results){
     if(err){
-      res.json({ms: "Error query"})
+      res.json({ms: "Error query" + req.user})
     }
 
     if(results.length === 0){
