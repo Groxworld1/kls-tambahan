@@ -52,6 +52,7 @@ router.get('/authFacebook/done', passport.authenticate('facebook', {failureRedir
     }
   })
   */
+  res.json(req.user);
 });
 
 /*
