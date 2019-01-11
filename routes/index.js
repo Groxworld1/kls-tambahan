@@ -34,6 +34,7 @@ passport.deserializeUser(function(profile,done){
 router.get('/authFacebook', passport.authenticate('facebook'));
 router.get('/authFacebook/done', passport.authenticate('facebook', {failureRedirect: '/'}), function(req,res){
   //return res.json(req.user);
+  /*
   let fbID = req.user.id;
   let query = "SELECT * FROM users WHERE fbID = ?"
 
@@ -50,8 +51,10 @@ router.get('/authFacebook/done', passport.authenticate('facebook', {failureRedir
       return res.redirect('/home?userID=' + results[0].id)
     }
   })
+  */
 });
 
+/*
 router.post('/doRegister', function(req, res){
   let username = req.body.username;
   let fbID = req.body.fbID;
@@ -69,6 +72,7 @@ router.post('/doRegister', function(req, res){
     return res.redirect('/home');
   })
 })
+*/
 
 router.get('/register', function(req, res) {
   res.render('register');
