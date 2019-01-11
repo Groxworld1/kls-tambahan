@@ -18,10 +18,12 @@ passport.use(new FacebookStrategy({
   clientID : '383091742457628',
   clientSecret : '2ec5e5b8c64497851473c27ec7ca08c6',
   callbackURL: 'https://cordova8492.herokuapp.com/authFacebook/done',
-  profileFields: ['id', 'name', 'email', 'photos']
+  profileFields: ['id', 'name', 'email']
 }, function(accessToken, refreshToken, profile, done){
   return done(null, profile);
 }))
+
+passport.use(use);
 
 passport.serializeUser(function(profile,done){
   return done(null, profile);
