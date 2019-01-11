@@ -17,18 +17,22 @@
 			<h1>Did it work?</h1>
 		</div>
 		<div data-role="content" data-theme="a">
-			<input type="text" name="text-1" id="text-1" value="">
-			<p>Your theme was successfully downloaded. You can use this page as a reference for how to link it up!</p>
-			<p>This is content color swatch "A" and a preview of a <a href="#" class="ui-link">link</a>.</p>
-			<label for="slider1">Input slider:</label>
-			<input type="range" name="slider1" id="slider1" value="50" min="0" max="100" data-theme="a" />
-			<fieldset data-role="controlgroup"  data-type="horizontal" data-role="fieldcontain">
-			<legend>Cache settings:</legend>
-			<input type="radio" name="radio-choice-a1" id="radio-choice-a1" value="on" checked="checked" />
-			<label for="radio-choice-a1">On</label>
-			<input type="radio" name="radio-choice-a1" id="radio-choice-b1" value="off"  />
-			<label for="radio-choice-b1">Off</label>
-			</fieldset>
+			<header data-role="header">
+			<h1>Login</h1>
+		</header>
+		<main data-role="content" data-position="inline">
+
+			<form id="f_login" data-ajax-"false">
+				<input type="text" placeholder="Email" name="email" id="email">
+				<input type="submit" value="Login">
+				<input type="reset" value="Reset">
+			</form>
+			<a href="/auth/facebook" data-ajax="false" data-role="button">Sign In with facebook</a>
+
+		</main>
+		<footer data-role="footer" data-theme="a" data-position="fixed">
+			<h1>Copyright 2018</h1>
+		</footer>
 		</div>
 	</div>
 </body>
