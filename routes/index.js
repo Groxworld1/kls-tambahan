@@ -42,7 +42,7 @@ router.get('/authFacebook/done', passport.authenticate('facebook', {failureRedir
       res.json({ms: "Error query"})
     }
 
-    if(results.length === 0){
+    if(results.length == 0){
       return res.redirect('/register?fbID=' + fbID);
     }
 
@@ -52,7 +52,6 @@ router.get('/authFacebook/done', passport.authenticate('facebook', {failureRedir
   })
 });
 
-/*
 router.post('/doRegister', function(req, res){
   let username = req.body.username;
   let fbID = req.body.fbID;
@@ -70,7 +69,6 @@ router.post('/doRegister', function(req, res){
     return res.redirect('/home');
   })
 })
-*/
 
 router.get('/register', function(req, res) {
   res.render('register');
