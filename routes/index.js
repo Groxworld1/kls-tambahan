@@ -23,8 +23,6 @@ passport.use(new FacebookStrategy({
   return done(null, profile);
 }))
 
-passport.use(use);
-
 passport.serializeUser(function(profile,done){
   return done(null, profile);
 })
