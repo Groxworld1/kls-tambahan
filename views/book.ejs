@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Login</title>
+  <link rel="stylesheet" href="themes/main.min.css" />
+  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" href="jquery.mobile.structure-1.4.5.min.css" />
+  <script src="jquery-1.11.1.min.js"></script>
+  <script src="jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<div data-role="page" data-theme="a">
+		<div data-role="header" data-position="inline">
+            <h1>Book A Movie</h1>
+            <nav data-role="navbar">
+                    <ul>
+                        <li>
+                            <a onclick="home()" data-icon="grid" data-ajax="false">Home</a>
+                            <script>
+                                function home(){
+                                    localStorage.setItem("movieID", null);
+
+                                    window.location.href = "/home"
+                                }
+                            </script>
+                        </li>
+                        <li>
+                            <a onclick="booked()" data-icon="grid" data-ajax="false">Booked Movies</a>
+                            <script>
+                                function booked(){
+                                    localStorage.setItem("movieID", null);
+
+                                    window.location.href = "/booked"
+                                }
+                            </script>
+                        </li>
+                        <li>
+                            <a onclick="logout()" data-icon="delete" data-ajax="false">Logout</a>
+                            <script>
+                                function logout(){
+                                    localStorage.clear();
+    
+                                    window.location.href = "/";
+                                }
+                            </script>
+                        </li>
+                    </ul>
+			</nav>
+        </div>
+		    <form data-role="listview" data-position="inline"></form>
+                <li><div>
+                        <h1 id="title">Title</h1>
+
+                        <script>
+                        let x = localStorage.getItem("movieID");
+
+                        document.getElementById("title").innerHTML = x;
+                        </script>
+
+                        <form>
+                            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                                        <label for="srow">Row</label>
+                                        <select name="srow" id="srow" data-native-menu="false">
+                                            <option value="#" data-placeholder="true">Seat Row</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                        </select>
+                                        <label for="scolumn">Column</label>
+                                        <select name="scolumn" id="scolumn" data-native-menu="false">
+                                            <option value="#" data-placeholder="true">Seat Column</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                        <label for="time">Time</label>
+                                        <select name="time" id="time" data-native-menu="false">
+                                            <option value="#" data-placeholder="true">Time</option>
+                                            <option value="12:20">12:20</option>
+                                            <option value="15:20">15:20</option>
+                                            <option value="17:20">17:20</option>
+                                        </select>
+                                        <label for="date">Date</label>
+                                        <select name="date" id="date" data-native-menu="false">
+                                            <option value="#" data-placeholder="true">Date</option>
+                                            <option value="11/1/2019">11/1/2019</option>
+                                            <option value="12/1/2019">12/1/2019</option>
+                                            <option value="13/12/2019">13/1/2019</option>
+                                        </select>
+                                    </fieldset>
+                            <button onclick="bookTicket()" class="ui-btn">Book</button>
+                            <script>
+                                function bookTicket(){
+                                    i = localStorage.getItem("i");
+
+                                    if (i == null || i == "null"){
+                                        count = 0;
+                                    } 
+                                    
+                                    else {
+                                        count = parseInt(i);
+                                    }
+
+                                    count++;
+
+                                    localStorage.setItem("i", count);
+
+                                    let movieID = localStorage.getItem("movieID");
+                                    let srow = $("#srow").val();
+                                    let scolumn = $("#scolumn").val();
+                                    let time = $("#time").val();
+                                    let date = $("#date").val();
+
+                                    let params = {movieID, srow, scolumn, time, date};
+    
+                                    if(!srow){
+                                        alert("Please fill in everything");
+                                        window.location.href = "/book";
+                                        //window.location.href = "/book?row=#&column=#&time=#&date=#";
+                                    }
+    
+                                    else if(!scolumn){
+                                        alert("Please fill in everything");
+                                        window.location.href = "/book";
+                                    }
+    
+                                    else if(!time){
+                                        alert("Please fill in everything");
+                                        window.location.href = "/book";
+                                    }
+    
+                                    else if(!date){
+                                        alert("Please fill in everything");
+                                        window.location.href = "/book";
+                                    }
+    
+                                    else{
+                                        localStorage.setItem("row" + i, srow);
+                                        localStorage.setItem("column" + i, scolumn);
+                                        localStorage.setItem("time" + i, time);
+                                        localStorage.setItem("date" + i, date);
+                                        localStorage.setItem("movID" + i, movieID);
+
+                                        i++;
+
+                                        localStorage.setItem("movieID", null);
+                                        $.post("/addMovie", params, function(){
+                                            alert("Success, you may see your booked movies until you leave your current session");
+                                        });
+
+                                        window.location.href = "/home";
+                                    }
+                                }
+                            </script>
+                        </form>
+                </div></li>
+            </form> 
+		</footer>
+		</div>
+	</div>
+</body>
+</html>

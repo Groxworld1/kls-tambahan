@@ -5,4 +5,7 @@ $(function(){
     if(param.has('fbID')){
         $('#fbID').val(param.get('fbID'))
     }
+    
+    let fbID = $('#fbID').val();
+    localStorage.setItem('fbID', fbID);
 })

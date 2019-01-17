@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Login</title>
+  <link rel="stylesheet" href="themes/main.min.css" />
+  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" href="jquery.mobile.structure-1.4.5.min.css" />
+  <script src="jquery-1.11.1.min.js"></script>
+  <script src="jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<div data-role="page" data-theme="a">
+		<div data-role="header" data-position="inline">
+            <h1>Booked Movies</h1>
+            <nav data-role="navbar">
+				<ul>
+					<li>
+                        <a onclick="home()" data-icon="grid" data-ajax="false">Home</a>
+                        <script>
+                            function home(){
+                                window.location.href = "/home"
+                            }
+                        </script>
+					</li>
+					<li>
+                        <a onclick="booked()" data-icon="grid" data-ajax="false">Booked Movies</a>
+                        <script>
+                            function booked(){
+                                window.location.href = "/booked"
+                            }
+                        </script>
+					</li>
+					<li>
+                        <a onclick="logout()" data-icon="delete" data-ajax="false">Logout</a>
+                        <script>
+                            function logout(){
+                                localStorage.clear();
+
+                                window.location.href = "/";
+                            }
+                        </script>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<main data-role="content" data-position="inline">
+            <ul data-role="listview" id="lv_user" data-inset="true">
+                <h1>Latest ticket:</h1>
+                    <li>
+                        <h1 id="title" >Title</h1>
+                        <h2 id="seat">Seat: null</h2>
+                        <h2 id="time">Time: null</h2>
+                        <h2 id="date">Date: null</h2>
+
+                        <script>
+                            let x = localStorage.getItem("movID" + 1);
+
+                            let a = localStorage.getItem("row" + 1);
+                            let b = localStorage.getItem("column" + 1);
+                            let c = localStorage.getItem("time" + 1);
+                            let d = localStorage.getItem("date" + 1);
+
+                            document.getElementById("title").innerHTML = x;
+                            document.getElementById("seat").innerHTML = "Seat: " + a + b;
+                            document.getElementById("time").innerHTML = "Time: " + c;
+                            document.getElementById("date").innerHTML = "Date: " + d;
+                        </script>
+                    </li>
+
+                    <li>
+                            <h1 id="title2" >Title</h1>
+                            <h2 id="seat2">Seat: null</h2>
+                            <h2 id="time2">Time: null</h2>
+                            <h2 id="date2">Date: null</h2>
+    
+                            <script>
+                                let x2 = localStorage.getItem("movID" + 2);
+    
+                                let a2 = localStorage.getItem("row" + 2);
+                                let b2 = localStorage.getItem("column" + 2);
+                                let c2 = localStorage.getItem("time" + 2);
+                                let d2 = localStorage.getItem("date" + 2);
+    
+                                document.getElementById("title2").innerHTML = x;
+                                document.getElementById("seat2").innerHTML = "Seat: " + a2 + b2;
+                                document.getElementById("time2").innerHTML = "Time: " + c2;
+                                document.getElementById("date2").innerHTML = "Date: " + d2;
+                            </script>
+                        </li>
+
+                        <li>
+                                <h1 id="title3" >Title</h1>
+                                <h2 id="seat3">Seat: null</h2>
+                                <h2 id="time3">Time: null</h2>
+                                <h2 id="date3">Date: null</h2>
+        
+                                <script>
+                                    let x3 = localStorage.getItem("movID" + 3);
+        
+                                    let a3 = localStorage.getItem("row" + 3);
+                                    let b3 = localStorage.getItem("column" + 3);
+                                    let c3 = localStorage.getItem("time" + 3);
+                                    let d3 = localStorage.getItem("date" + 3);
+        
+                                    document.getElementById("title3").innerHTML = x3;
+                                    document.getElementById("seat3").innerHTML = "Seat: " + a3 + b3;
+                                    document.getElementById("time3").innerHTML = "Time: " + c3;
+                                    document.getElementById("date3").innerHTML = "Date: " + d3;
+                                </script>
+                            </li>
+                            
+                            *Can only track up to three movies and will disappear after the session is complete
+            </ul>
+		</main>
+		<footer data-role="footer" data-theme="a" data-position="fixed">
+			<h1>Copyright 2018</h1>
+		</footer>
+		</div>
+	</div>
+</body>
+</html>
