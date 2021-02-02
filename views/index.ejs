@@ -16,6 +16,15 @@
 	<div data-role="page" data-theme="a">
 		<div data-role="header" data-position="inline">
 			<h1>XIII Login</h1>
+			<object data="planets.gif" width="145" height="126" usemap="#planetmap"></object>
+
+		<map name="planetmap">
+  			<area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.htm">
+  			<area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
+  			<area shape="circle" coords="124,58,8" alt="Venus" href="venus.htm">
+		</map>
+
+		<p><b>Note:</b> The usemap attribute of the object element is not supported in Chrome, Edge, Safari, and Opera.</p>
 		</div>
 		<main data-role="content" data-position="inline">
 			<form id="f_login" data-ajax="false">
@@ -28,17 +37,6 @@
 			<h1>Copyright 2018</h1>
 		</footer>
 		</div>
-	</div>
-	<div>
-		<object data="planets.gif" width="145" height="126" usemap="#planetmap"></object>
-
-		<map name="planetmap">
-  			<area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.htm">
-  			<area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
-  			<area shape="circle" coords="124,58,8" alt="Venus" href="venus.htm">
-		</map>
-
-		<p><b>Note:</b> The usemap attribute of the object element is not supported in Chrome, Edge, Safari, and Opera.</p>
 	</div>
 </body>
 </html>
